@@ -5,16 +5,17 @@ Java get started with the programming exercises solved during class.
 
 ## How do I use this repository?
 
-In order to use this repository, you must [intall
+In order to use this repository, you must first [intall
 git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) on
-your local machine.  Next you need to make a clone of the repository.
+your local machine.
 
-Next, to download the repository on your machine:
+Next, you need to make a clone of the repository on your machine:
 
-1. Go to the online repository, then press on "Code" and copy the link, as shown in the attached screenshot.
+1. From the online repository, press on "Code" and copy the link.
 2. Then, in Netbeans, Go to "Team" in the top menu, then "Git", then "Clone".
 3. Next to "Repository URL", paste the copied link.
 4. Press Next, Next, and Finish.
+5. Similarly for Eclipse.
 
 To pull the work I'm updating:
 
