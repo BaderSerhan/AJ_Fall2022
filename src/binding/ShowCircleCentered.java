@@ -14,12 +14,14 @@ public class ShowCircleCentered extends Application {
         // Create a pane to hold the circle
         Pane pane = new Pane();
 
-        // Create a circle and set its properties
+        // Create a circle and set its properties using binding
         Circle circle = new Circle(50);
+
         circle.centerXProperty().bind(pane.widthProperty().divide(2));
         circle.centerYProperty().bind(pane.heightProperty().divide(2));
 
         circle.radiusProperty().bind(pane.widthProperty().divide(4));
+
         circle.setStroke(Color.BLACK);
         circle.setFill(Color.WHITE);
         pane.getChildren().add(circle); // Add circle to the pane

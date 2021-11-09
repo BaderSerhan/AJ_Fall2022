@@ -45,7 +45,10 @@ public class ControlsBinding extends Application {
         root.setVgap(10);
 
         Scene scene = new Scene(root, 300, 250);
+
+        //binding combo box width property to the scene width
         cmb.prefWidthProperty().bind(scene.widthProperty().divide(3));
+        //binding text3 height property to the scene height
         txt3.prefHeightProperty().bind(scene.heightProperty().divide(5));
 
         primaryStage.setTitle("Binding");
