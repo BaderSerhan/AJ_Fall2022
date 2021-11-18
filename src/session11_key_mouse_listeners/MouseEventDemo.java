@@ -1,7 +1,8 @@
-package session10_events;
+package session11_key_mouse_listeners;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -15,6 +16,12 @@ public class MouseEventDemo extends Application {
         Text text = new Text(100, 100, "Programming is fun");
         text.setStyle("-fx-border-color: blue;");
         pane.getChildren().addAll(text);
+
+        //generic mouse event using lambda expression
+        text.addEventHandler(MouseEvent.ANY, e -> {
+            System.out.println(e.getEventType().getName());
+        });
+
         text.setOnMouseDragged(e -> {
             text.setX(e.getX());
             text.setY(e.getY());

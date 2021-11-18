@@ -1,4 +1,4 @@
-package extras;
+package session08_shapes;
 
 import javafx.application.Application;
 import javafx.scene.Group;
