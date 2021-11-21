@@ -1,6 +1,7 @@
 package assignment01;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -19,6 +20,7 @@ import javafx.stage.Stage;
 public class SimpleCalculator extends Application {
 
     TextField textFieldOne, textFieldTwo, textFieldResult;
+    Button addButton, subtractButton, multiplyButton, divideButton;
 
     @Override
     public void start(Stage primaryStage) {
@@ -42,19 +44,23 @@ public class SimpleCalculator extends Application {
         HBox hBox = new HBox(5);
         hBox.setAlignment(Pos.CENTER);
 
-        Button addButton = new Button("Add");
-        Button subtractButton = new Button("Subtract");
-        Button multiplyButton = new Button("Multiply");
-        Button divideButton = new Button("Divide");
+        addButton = new Button("Add");
+        subtractButton = new Button("Subtract");
+        multiplyButton = new Button("Multiply");
+        divideButton = new Button("Divide");
 
         addButton.setOnAction(e -> add());
-
         subtractButton.setOnAction(e -> subtract());
-
         multiplyButton.setOnAction(e -> multiply());
-
         divideButton.setOnAction(e -> divide());
 
+//        or we can use one event handler for the 4 buttons
+//
+//        addButton.setOnAction(e -> calculate(e));
+//        subtractButton.setOnAction(e -> calculate(e));
+//        multiplyButton.setOnAction(e -> calculate(e));
+//        divideButton.setOnAction(e -> calculate(e));
+//
         hBox.getChildren().addAll(addButton, subtractButton, multiplyButton, divideButton);
 
         BorderPane borderPane = new BorderPane();
@@ -106,6 +112,25 @@ public class SimpleCalculator extends Application {
         if (checkFields(textFieldOne, textFieldTwo)) {
             double result = Double.parseDouble(textFieldOne.getText()) / Double.parseDouble(textFieldTwo.getText());
             textFieldResult.setText(result + "");
+        }
+    }
+
+    //using one event handler for 4 buttons
+    private void calculate(ActionEvent e) {
+        if (e.getSource() == addButton) {
+            this.add();
+        }
+
+        if (e.getSource() == subtractButton) {
+            this.subtract();
+        }
+
+        if (e.getSource() == multiplyButton) {
+            this.multiply();
+        }
+
+        if (e.getSource() == divideButton) {
+            this.divide();
         }
     }
 }
