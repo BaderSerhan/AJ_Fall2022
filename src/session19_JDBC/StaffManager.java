@@ -29,7 +29,9 @@ public class StaffManager extends Application {
     private Label lblName = new Label("Name");
     private Label lblPhone = new Label("Phone");
 
+    private Connection connection;
     private Statement statement;
+    private PreparedStatement preparedStatement;
 
     @Override
     public void start(Stage primaryStage) throws ClassNotFoundException, SQLException {
@@ -108,7 +110,7 @@ public class StaffManager extends Application {
         System.out.println("Driver loaded");
 
         // Establish a connection
-        Connection connection = DriverManager
+        connection = DriverManager
                 .getConnection("jdbc:mysql://" + host + "/UMS?" //Database Name: University Management System
                         + "user=" + username + "&password=" + rootPassword);
 
@@ -119,7 +121,7 @@ public class StaffManager extends Application {
 
         //Check if a table exist,
         //either by using connection.getMetaData()
-        //or running an SQL query
+        //or running a custom SQL query
 //        String createQuery = "create table Staff ("
 //                + "id char(9) not null,"
 //                + "name varchar(20),"
@@ -153,20 +155,30 @@ public class StaffManager extends Application {
     }
 
     public void insertEntry() throws SQLException {
-        String staticQuery = "INSERT INTO Staff (id, name, phone) "
-                + "VALUES ('1', 'Bader', '12345')";
+        //1st way - using a standard statement
+//        String staticQuery = "INSERT INTO Staff (id, name, phone) "
+//                + "VALUES ('1', 'Bader', '12345')";
+//
+//        String query = "INSERT INTO Staff (id, name, phone) "
+//                + "VALUES ("
+//                + "'" + txtId.getText().trim() + "', " //single quotations, and comma after entry
+//                + "'" + txtName.getText().trim() + "', "
+//                + "'" + txtPhone.getText().trim() + "'"
+//                + ")";
+//
+//        statement.executeUpdate(query);
 
-        String query = "INSERT INTO Staff (id, name, phone) "
-                + "VALUES ("
-                + "'" + txtId.getText().trim() + "', " //single quotations, and comma after entry
-                + "'" + txtName.getText().trim() + "', "
-                + "'" + txtPhone.getText().trim() + "'"
-                + ")";
+        //2nd way - using PREPARED STATEMENT
+        String preparedQuery = "INSERT INTO Staff (id, name, phone) VALUES (?, ?, ?)";
+        preparedStatement = connection.prepareStatement(preparedQuery);
 
-        //PREPARED STATEMENT
-        statement.executeUpdate(query);
+        preparedStatement.setString(1, txtId.getText().trim());
+        preparedStatement.setString(2, txtName.getText().trim());
+        preparedStatement.setString(3, txtPhone.getText().trim());
+
+        preparedStatement.executeUpdate();
+
         lblRecord.setText("Entry inserted");
-
     }
 
     public void updateEntry() throws SQLException {
