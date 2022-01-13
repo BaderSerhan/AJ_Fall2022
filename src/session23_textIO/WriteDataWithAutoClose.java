@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
-public class WriteData {
+public class WriteDataWithAutoClose {
 
     public static void main(String[] args) throws FileNotFoundException {
 
