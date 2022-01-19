@@ -1,3 +1,6 @@
-John T Smith	92
-Eric K Jones	84
-Richard H Green	88
+Fayez	92
+Charbel	84
+Badih	88
+Mohammad	92
+Chantal	84
+Borhane	88
