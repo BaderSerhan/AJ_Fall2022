@@ -17,6 +17,7 @@ public class TestObjectStreamWithPerson {
         } catch (FileNotFoundException ex) {
             System.out.println("FileNotFoundException thrown by FileOutputStream");
         } catch (IOException ex) {
+            ex.printStackTrace();
             System.out.println("IOException thrown by ObjectOutputStream");
         }
         //but since FileNotFoundException is a subclass from IOException

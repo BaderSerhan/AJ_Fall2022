@@ -49,6 +49,7 @@ public class BorderPaneDemo extends Application {
         BorderPane.setAlignment(top, Pos.CENTER);
         //----------------------------------------------------------------------------
         Scene scene = new Scene(root, 400, 400);
+        scene.setRoot(root);
 
         primaryStage.setTitle("BorderPane Demo");
         primaryStage.setScene(scene);
